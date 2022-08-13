@@ -65,7 +65,7 @@ function addGrid(gridSize) {
 function changeColorBlack() {
     let item = document.querySelectorAll('.grid-item');
     item.forEach(item => {
-        item.addEventListener('mouseover', () => {
+        item.addEventListener('click', () => {
             item.style.backgroundColor = `black`;
         });
     });
@@ -76,7 +76,7 @@ function changeColor() {
     let items = document.querySelectorAll('.grid-item');
     let tempColor;
     items.forEach(item => {
-        item.addEventListener('mouseover', () => {
+        item.addEventListener('click', () => {
             let backgroundColor = getRandomColor();
             item.style.backgroundColor = `${backgroundColor}`;
             darken10Percent(item);
