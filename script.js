@@ -79,9 +79,7 @@ function changeColor() {
         item.addEventListener('mouseover', () => {
             let backgroundColor = getRandomColor();
             item.style.backgroundColor = `${backgroundColor}`;
-            tempColor = item.style.opacity;
-            if (tempColor <= 0) return;
-            item.style.opacity = tempColor - 0.1;
+            darken10Percent(item);
         });
     });
 }
@@ -95,3 +93,9 @@ function getRandomColor() {
     return color;
 }
 
+function darken10Percent(item){
+    let tempColor = item.style.opacity;
+    if (tempColor <= 0) return;
+    item.style.opacity = tempColor - 0.1;
+    return 0;
+}
