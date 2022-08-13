@@ -5,29 +5,49 @@ const BASE_GRID = 16;
 const container = document.querySelector('#container');
 addGrid(BASE_GRID);
 let currentGridSize = BASE_GRID;
-
-changeColor();
+let currentPen = '';
 
 const newGrid = document.querySelector('.new-grid');
 newGrid.addEventListener('click', () => {
-    do {
-        currentGridSize = +prompt("Enter new grid size");
-    } while (currentGridSize > 100 || currentGridSize < 1);
+    currentGridSize = +prompt("Enter new grid size (range 1-100)");
+    if(currentGridSize === null || currentGridSize === 0){
+        currentGridSize = BASE_GRID;
+    } 
+    else if(currentGridSize > 100){
+        currentGridSize = 100
+    }
     container.replaceChildren();
     addGrid(currentGridSize);
-    changeColor();
+    if(currentPen === 'black'){
+        changeColorBlack();
+    }
+    else if(currentPen === 'rainbow'){
+        changeColor();
+    }
 });
 
 const resetGrid = document.querySelector('.reset-grid');
 resetGrid.addEventListener('click', () => {
     container.replaceChildren();
     addGrid(currentGridSize);
-    changeColor();
+    if(currentPen === 'black'){
+        changeColorBlack();
+    }
+    else if(currentPen === 'rainbow'){
+        changeColor();
+    }
 });
 
 const blackPen = document.querySelector('.black-pen');
 blackPen.addEventListener('click', () => {
     changeColorBlack();
+    currentPen = 'black';
+});
+
+const rainbow = document.querySelector('.rainbow');
+rainbow.addEventListener('click', () => {
+    changeColor();
+    currentPen = 'rainbow';
 });
 
 function addGrid(gridSize) {
