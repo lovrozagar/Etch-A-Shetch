@@ -65,7 +65,7 @@ function addGrid(gridSize) {
 function changeColorBlack() {
     let item = document.querySelectorAll('.grid-item');
     item.forEach(item => {
-        item.addEventListener('click', () => {
+        item.addEventListener('mouseover', () => {
             item.style.backgroundColor = `black`;
         });
     });
@@ -76,7 +76,7 @@ function changeColor() {
     let items = document.querySelectorAll('.grid-item');
     let tempColor;
     items.forEach(item => {
-        item.addEventListener('click', () => {
+        item.addEventListener('mouseover', () => {
             let backgroundColor = getRandomColor();
             item.style.backgroundColor = `${backgroundColor}`;
             darken10Percent(item);
@@ -99,3 +99,5 @@ function darken10Percent(item){
     item.style.opacity = tempColor - 0.1;
     return 0;
 }
+
+//change click to touch
